@@ -28,14 +28,15 @@ function printGithubUserProfile(username) {
   return getGitHubUserProfile(username)
     .then((data) => {
       const name = data.name;
-      const avatar_url = data.avatar_url;
+      const img = data.avatar_url;
 
       const div = document.createElement("div");
       div.innerHTML = `
           <h2>${name}</h2>
-          <img src="${avatar_url}" />
+          <img src="${img}" />
         `;
       document.body.appendChild(div);
+      return { img, name };
     })
     .catch((error) => {
       console.error("Error al imprimir perfil de GitHub:", error);
